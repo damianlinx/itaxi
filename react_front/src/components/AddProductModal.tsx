@@ -24,7 +24,6 @@ const AddProductModal: React.FC<Props> = ({ show, onClose }) => {
 
   const handleProductPriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    // Sprawdź czy wprowadzany znak jest cyfrą lub kropką
     if (/^\d*\.?\d*$/.test(value)) {
       setProductPrice(value);
       setErrors({ ...errors, productPrice: '' });

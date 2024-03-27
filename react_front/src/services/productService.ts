@@ -1,8 +1,10 @@
 import Product from '../models/Product';
 
+const API_HOST = 'http://localhost:8080';
+
 export const fetchProducts = async (): Promise<Product[]> => {
   try {
-    const response = await fetch("http://localhost:8080/products");
+    const response = await fetch(`${API_HOST}/products`);
     if (!response.ok) {
       throw new Error('Failed to fetch products');
     }
@@ -16,7 +18,7 @@ export const fetchProducts = async (): Promise<Product[]> => {
 
 export const addProduct = async (name: string, price: number): Promise<string | null> => {
   try {
-    const response = await fetch('http://localhost:8080/products', {
+    const response = await fetch(`${API_HOST}/products`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -35,16 +37,16 @@ export const addProduct = async (name: string, price: number): Promise<string | 
   }
 };
 
-  export const deleteProduct = async (productId: number): Promise<void> => {
-    try {
-      const response = await fetch(`http://localhost:8080/products/${productId}`, {
-        method: 'DELETE'
-      });
-      if (!response.ok) {
-        throw new Error('Failed to delete product');
-      }
-    } catch (error) {
-      console.error('Error deleting product:', error);
-      throw error;
+export const deleteProduct = async (productId: number): Promise<void> => {
+  try {
+    const response = await fetch(`${API_HOST}/products/${productId}`, {
+      method: 'DELETE'
+    });
+    if (!response.ok) {
+      throw new Error('Failed to delete product');
     }
-  };
+  } catch (error) {
+    console.error('Error deleting product:', error);
+    throw error;
+  }
+};

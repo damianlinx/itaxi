@@ -8,12 +8,8 @@ import java.util.Optional;
 public interface ProductService {
 
     List<ProductEntity> getAll();
-
     Optional<ProductEntity> getById(long id);
-
     ProductEntity create(ProductDto product);
-
     ProductEntity update(long id, ProductDto product);
-
     void delete(long id);
 }
